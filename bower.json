@@ -1,0 +1,22 @@
+{
+  "name": "fend-neighbourhood-map",
+  "description": "Udacity FrontEnd Nanodegree NeighbourHood Map",
+  "main": "server.js",
+  "authors": [
+    "Tushar Goel"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "knockout": "^3.4.2"
+  }
+}
