@@ -30,4 +30,4 @@
   $> ./ngrok http 8080
   ```
 
-5. Copy the public URL ngrok gives you and try running it.
+7. Copy the public URL ngrok gives you and try running it.
