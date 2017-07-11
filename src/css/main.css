@@ -38,13 +38,13 @@ body {
     font-size: 18px;
 }
 
-#main_header #btn_side_nav {
+#btn_side_nav {
     position: absolute;
     margin: 9px 0 0 15px;
     color: white;
 }
 
-#main_header span.header-text {
+#main_header header-text {
     position: absolute;
     margin: 9px 0 0 50px;
 }
@@ -69,8 +69,10 @@ body {
     z-index: 10;
     transition-duration: 0.3s;
     -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
     transform: translateX(0);
     transition-property: -webkit-transform;
+    transition-property: -ms-transform;
     transition-property: transform;
     overflow: hidden;
 }
@@ -114,7 +116,7 @@ body {
 #locations_container > ul {
     padding: 0;
     list-style-type: none;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 #locations_container ul li {

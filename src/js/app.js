@@ -47,15 +47,15 @@ var Restaurant = function(data) {
 
     self.triggerClick = function() {
         google.maps.event.trigger(self.marker, 'click');
-    }
+    };
     self.triggerMouseOver = function() {
         google.maps.event.trigger(self.marker, 'mouseover');
-    }
+    };
     self.triggerMouseOut = function() {
         google.maps.event.trigger(self.marker, 'mouseout');
-    }
+    };
 
-}
+};
 
 var ViewModel = function() {
     var self = this;
@@ -76,11 +76,11 @@ var ViewModel = function() {
         }
 
         return ko.utils.arrayFilter(self.locationList(), function(locationItem) {
-            var result = locationItem.name.toLowerCase().indexOf(self.filterText().toLowerCase()) > -1
+            var result = locationItem.name.toLowerCase().indexOf(self.filterText().toLowerCase()) > -1;
             locationItem.visible(result);
             return result;
         });
     });
-}
+};
 
 ko.applyBindings(new ViewModel());
