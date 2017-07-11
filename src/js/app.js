@@ -1,3 +1,4 @@
+// Normal `Red` Icon
 var markerIcon1 = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: '#cb202d',
@@ -6,17 +7,47 @@ var markerIcon1 = {
     strokeColor: 'white',
     strokeWeight: 2
 };
+
+// Hover `Blue` Icon
 var markerIcon2 = jQuery.extend({}, markerIcon1);
 markerIcon2.fillColor = '#0CB';
+
+var fourSquareURL;
+
+// FourSqure `clientId` and `clientSecret`
+var clientID = '5PHXENDJH4FANF5GFNTZK4QX5KV0MSLIU5MX51BYXCP1JLOF';
+var clientSecret = 'X2UQHHRCEGYFO2Y05XJDG0WVSY3TZD13CEOJ4O00IUB0XCI3';
+
 
 var Restaurant = function(data) {
     var self = this;
     self.name = data.name;
     self.lat = data.lat;
     self.lng = data.lng;
-    self.visible = ko.observable(true);
+    self.address = '';
+    self.phone = '';
 
-    self.infoWindow = new google.maps.InfoWindow({ content: self.name });
+    self.visible = ko.observable(true);
+    self.infoWindow = new google.maps.InfoWindow({ content: this.name });
+
+    // Getting the Data from FourSquare and setting into infoWindow
+    fourSquareURL = 'https://api.foursquare.com/v2/venues/search?ll=' + self.lat + ',' + self.lng + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20170710' + '&query=' + this.name;
+    $.getJSON(fourSquareURL, function(data) {
+        var result = data.response.venues[0];
+        self.address = result.location.formattedAddress.join('\n');
+        self.phone = result.contact.formattedPhone || '';
+
+        self.infoWindowContent = '<div class="marker-info">' +
+            '<div>' + self.name + '</div>' +
+            '<div>' + self.address + '</div>' +
+            '<div>' + self.phone + '</div>' +
+            '</div>';
+
+        self.infoWindow.setContent(self.infoWindowContent);
+
+    }).fail(function() {
+        alert("Error in Getting Data from Foursquare API call. Please refresh the page and try again!");
+    });
 
     self.marker = new google.maps.Marker({
         position: new google.maps.LatLng(self.lat, self.lng),
@@ -33,7 +64,7 @@ var Restaurant = function(data) {
     });
 
     self.marker.addListener('click', function() {
-        //self.marker.setIcon(markerIcon2);
+        map.panTo(self.marker.getPosition());
         self.infoWindow.open(map, this);
     });
 

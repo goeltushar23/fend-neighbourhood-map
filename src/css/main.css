@@ -131,3 +131,11 @@ body {
 #locations_container ul li:hover {
     color: #0CB;
 }
+
+.marker-info > div {
+    margin-bottom: 10px;
+}
+
+.marker-info > div:first-child {
+    font-weight: bold;
+}
