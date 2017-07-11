@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/app.min.css">
     <script defer type="text/javascript" src="js/lib.min.js"></script>
-    <script defer type="text/javascript" src="js/app.min.js"></script>
 </head>
 
 <body>
@@ -29,14 +28,32 @@
                 </div>
             </div>
             <div id="locations_container">
-                <ul data-bind="foreach: visibleLocations">
-                    <li data-bind="text: $data.title"></li>
+                <ul data-bind="foreach: visibleLocationList">
+                    <li data-bind="text: $data.name, click: triggerClick, event: {mouseover: triggerMouseOver, mouseout: triggerMouseOut}"></li>
                 </ul>
             </div>
         </div>
     </div>
+    <script>
+    var map;
+
+    function initMap() {
+        var mapOptions = {
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoom: 13,
+            center: {
+                lat: 12.966835,
+                lng: 77.608727
+            }
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        map.setTilt(45);
+    }
+    </script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRLZ6KbWKr9b3FDIGjcy7G9GLtonZaBDY&callback=initMap&v=3.exp">
     </script>
+    <script defer type="text/javascript" src="js/app.min.js"></script>
 </body>
 
 </html>

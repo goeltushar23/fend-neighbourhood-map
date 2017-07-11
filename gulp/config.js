@@ -32,8 +32,8 @@ module.exports = {
     },
     app_js: {
         src: [
+            'src/js/model_data.js',
             'src/js/common.js',
-            'src/js/map.js',
             'src/js/app.js'
         ],
         outputName: 'app.min.js',
