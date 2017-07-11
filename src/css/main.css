@@ -44,7 +44,7 @@ body {
     color: white;
 }
 
-#main_header header-text {
+.header-text {
     position: absolute;
     margin: 9px 0 0 50px;
 }
