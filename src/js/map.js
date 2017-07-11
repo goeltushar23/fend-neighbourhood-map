@@ -1,4 +1,4 @@
-var markerList = [
+var mapLocations = [
     { title: 'Toit', lat: 12.9793822, lng: 77.6406363 },
     { title: 'Truffles', lat: 12.9332976396, lng: 77.6142926887 },
     { title: 'Big Brewsky', lat: 12.9129742, lng: 77.6830537 },
@@ -67,33 +67,49 @@ function initMap() {
     map.setTilt(45);
 
     var infoWindow = new google.maps.InfoWindow(),
-        position;
+        position, marker;
 
-    markerList.forEach(function(markerInfo, index) {
-        position = new google.maps.LatLng(markerInfo['lat'], markerInfo['lng']);
+    var markerIcon1 = {
+        path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+        fillColor: '#cb202d',
+        fillOpacity: 1,
+        scale: 0.8,
+        strokeColor: 'white',
+        strokeWeight: 2
+    };
+    var markerIcon2 = jQuery.extend({}, markerIcon1);
+    markerIcon2.fillColor = '#0CB';
+
+    mapLocations.forEach(function(markerInfo) {
+        position = new google.maps.LatLng(markerInfo.lat, markerInfo.lng);
         bounds.extend(position);
 
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: markerInfo['title'],
-            icon: {
-                path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-                fillColor: '#cb202d',
-                fillOpacity: 1,
-                scale: 0.8,
-                strokeColor: 'white',
-                strokeWeight: 2
-            }
+            title: markerInfo.title,
+            icon: markerIcon1
         });
 
         // info Window for Each marker
-        google.maps.event.addListener(marker, 'click', (function(marker, index) {
+        google.maps.event.addListener(marker, 'click', (function(marker) {
             return function() {
-                infoWindow.setContent(marker['title']);
+                infoWindow.setContent(marker.title);
                 infoWindow.open(map, marker);
-            }
-        })(marker, index));
+            };
+        })(marker));
+
+        google.maps.event.addListener(marker, 'mouseover', (function(marker) {
+            return function() {
+                marker.setIcon(markerIcon2);
+            };
+        })(marker));
+
+        google.maps.event.addListener(marker, 'mouseout', (function(marker) {
+            return function() {
+                marker.setIcon(markerIcon1);
+            };
+        })(marker));
 
         map.fitBounds(bounds);
     });

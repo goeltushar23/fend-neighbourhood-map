@@ -16,7 +16,7 @@ var gulp = require('gulp');
 requireDir('./gulp/tasks', { recurse: true })
 
 // $> gulp build
-gulp.task('build', ['resources', 'lib_css', 'app_css', 'lib_js', 'app_js', 'minify_html']);
+gulp.task('build', ['resources', 'app_css', 'lib_js', 'app_js', 'minify_html']);
 
 // $> gulp
 gulp.task('default', ['set_watch', 'watch_js', 'watch_css', 'watch_html', 'nodemon']);

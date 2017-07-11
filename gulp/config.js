@@ -4,9 +4,7 @@ var dest = './dist',
 module.exports = {
     resources: {
         fonts: {
-            src: [
-                'bower_components/bootstrap/dist/fonts/**/*'
-            ],
+            src: [],
             dest: dest + '/fonts'
         },
         img: {
@@ -15,14 +13,6 @@ module.exports = {
             ],
             dest: dest + '/img'
         }
-    },
-    lib_css: {
-        src: [
-            //"bower_components/bootstrap/dist/css/bootstrap.min.css"
-            //"bower_components/map-icons/dist/css/map-icons.css"
-        ],
-        outputName: 'lib.min.css',
-        dest: dest + '/css'
     },
     app_css: {
         src: [
@@ -35,9 +25,7 @@ module.exports = {
     lib_js: {
         src: [
             "bower_components/jquery/dist/jquery.js",
-            //"bower_components/bootstrap/dist/js/bootstrap.js",
             "bower_components/knockout/dist/knockout.js"
-            //"bower_components/map-icons/dist/js/map-icons.js"
         ],
         outputName: 'lib.min.js',
         dest: dest + '/js'
@@ -64,7 +52,11 @@ module.exports = {
         env: { 'NODE_ENV': 'dev' },
         watch: ['server.js', 'src/*'],
         ignore: [],
-        //nodeArgs: ['--debug', '--harmony'],
         delay: 2
-    }
+    },
+    lib_css: {
+        src: [],
+        outputName: 'lib.min.css',
+        dest: dest + '/css'
+    },
 };

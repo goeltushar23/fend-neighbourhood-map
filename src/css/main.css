@@ -72,8 +72,60 @@ body {
     transform: translateX(0);
     transition-property: -webkit-transform;
     transition-property: transform;
+    overflow: hidden;
 }
 
 #filter_nav.collapsed {
     transform: translateX(-300px);
+}
+
+#filter_container {
+    padding: 10px 15px;
+}
+
+#filter_container > div:first-child {
+    display: inline-block;
+    overflow: hidden;
+}
+
+#filter_input {
+    width: 240px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+#filter_container > div:nth-child(2) {
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 30px;
+    position: absolute;
+    height: 31px;
+    margin-left: -1px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 0 3px 3px 0;
+}
+
+#locations_container {
+    height: 100%;
+    overflow-x: scroll;
+}
+
+#locations_container > ul {
+    padding: 0;
+    list-style-type: none;
+    margin-top: 0px;
+}
+
+#locations_container ul li {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#locations_container ul li:nth-child(odd) {
+    background-color: #eee;
+}
+
+#locations_container ul li:hover {
+    color: #0CB;
 }

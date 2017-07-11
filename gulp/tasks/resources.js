@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var config = require('../config').resources;
 
-gulp.task('resources', ['fonts', 'img']);
+gulp.task('resources', ['img']);
 
 gulp.task('fonts', function() {
     gulp.src(config.fonts.src)
