@@ -18,7 +18,8 @@ module.exports = {
     },
     lib_css: {
         src: [
-            "bower_components/bootstrap/dist/css/bootstrap.min.css"
+            //"bower_components/bootstrap/dist/css/bootstrap.min.css"
+            //"bower_components/map-icons/dist/css/map-icons.css"
         ],
         outputName: 'lib.min.css',
         dest: dest + '/css'
@@ -34,14 +35,19 @@ module.exports = {
     lib_js: {
         src: [
             "bower_components/jquery/dist/jquery.js",
-            "bower_components/bootstrap/dist/js/bootstrap.js",
+            //"bower_components/bootstrap/dist/js/bootstrap.js",
             "bower_components/knockout/dist/knockout.js"
+            //"bower_components/map-icons/dist/js/map-icons.js"
         ],
         outputName: 'lib.min.js',
         dest: dest + '/js'
     },
     app_js: {
-        src: "src/js/*",
+        src: [
+            'src/js/common.js',
+            'src/js/map.js',
+            'src/js/app.js'
+        ],
         outputName: 'app.min.js',
         dest: dest + '/js',
         watch: "src/js/*"

@@ -8,6 +8,8 @@ var ViewModel = function() {
     }
 }
 
-$(function() {
-    ko.applyBindings(new ViewModel());
-});
+ko.applyBindings(new ViewModel());
+
+// $(function() {
+    
+// });
