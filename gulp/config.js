@@ -16,16 +16,16 @@ module.exports = {
     },
     app_css: {
         src: [
-            "src/css/main.css"
+            'src/css/main.css'
         ],
         outputName: 'app.min.css',
         dest: dest + '/css',
-        watch: "src/css/*"
+        watch: 'src/css/*'
     },
     lib_js: {
         src: [
-            "bower_components/jquery/dist/jquery.js",
-            "bower_components/knockout/dist/knockout.js"
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/knockout/dist/knockout.js'
         ],
         outputName: 'lib.min.js',
         dest: dest + '/js'
@@ -33,18 +33,18 @@ module.exports = {
     app_js: {
         src: [
             'src/js/model_data.js',
-            'src/js/common.js',
+            'src/js/map.js',
             'src/js/app.js'
         ],
         outputName: 'app.min.js',
         dest: dest + '/js',
-        watch: "src/js/*"
+        watch: 'src/js/*'
     },
     minify_html: {
-        src: "src/index.html",
+        src: 'src/index.html',
         outputName: 'index.html',
         dest: dest,
-        watch: "src/index.html"
+        watch: 'src/index.html'
     },
     nodemon: {
         script: 'server.js',

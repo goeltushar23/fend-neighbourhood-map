@@ -12,5 +12,3 @@ gulp.task('watch_css', function() {
 gulp.task('watch_html', function() {
     gulp.watch(config.minify_html.watch, ['minify_html']);
 });
-
-

@@ -1,17 +1,3 @@
-// Normal `Red` Icon
-var markerIcon1 = {
-    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-    fillColor: '#cb202d',
-    fillOpacity: 1,
-    scale: 0.8,
-    strokeColor: 'white',
-    strokeWeight: 2
-};
-
-// Hover `Blue` Icon
-var markerIcon2 = jQuery.extend({}, markerIcon1);
-markerIcon2.fillColor = '#0CB';
-
 var fourSquareURL;
 
 // FourSqure `clientId` and `clientSecret`
@@ -26,9 +12,8 @@ var Restaurant = function(data) {
     self.lng = data.lng;
     self.address = '';
     self.phone = '';
-
+    self.infoWindowContent = this.name;
     self.visible = ko.observable(true);
-    self.infoWindow = new google.maps.InfoWindow({ content: this.name });
 
     // Getting the Data from FourSquare and setting into infoWindow
     fourSquareURL = 'https://api.foursquare.com/v2/venues/search?ll=' + self.lat + ',' + self.lng + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20170710' + '&query=' + this.name;
@@ -42,8 +27,6 @@ var Restaurant = function(data) {
             '<div>' + self.address + '</div>' +
             '<div>' + self.phone + '</div>' +
             '</div>';
-
-        self.infoWindow.setContent(self.infoWindowContent);
 
     }).fail(function() {
         alert("Error in Getting Data from Foursquare API call. Please refresh the page and try again!");
@@ -64,8 +47,14 @@ var Restaurant = function(data) {
     });
 
     self.marker.addListener('click', function() {
+        self.marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
+            self.marker.setAnimation(null);
+        }, 2000);
+
         map.panTo(self.marker.getPosition());
-        self.infoWindow.open(map, this);
+        infoWindow.setContent(self.infoWindowContent);
+        infoWindow.open(map, this);
     });
 
     self.marker.addListener('mouseover', function() {
@@ -112,6 +101,11 @@ var ViewModel = function() {
             return result;
         });
     });
-};
 
-ko.applyBindings(new ViewModel());
+    self.filterVisible = ko.observable(true);
+
+    self.toggleFilterNav = function() {
+        self.filterVisible(!self.filterVisible());
+    }
+
+};
