@@ -106,6 +106,6 @@ var ViewModel = function() {
 
     self.toggleFilterNav = function() {
         self.filterVisible(!self.filterVisible());
-    }
+    };
 
 };
