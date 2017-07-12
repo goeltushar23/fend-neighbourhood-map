@@ -11,7 +11,7 @@
 <body>
     <header id="main_header">
         <a href="#" id="btn_side_nav" title="Show/Hide Filter Side Bar" data-bind="click: toggleFilterNav">
-            <img src="img/ic_menu_white_24dp_1x.png" srcset="img/ic_menu_white_24dp_1x.png 1x, img/ic_menu_white_24dp_2x.png 2x" width="24" height="24" />
+            <img src="img/ic_menu_white_24dp_1x.png" srcset="img/ic_menu_white_24dp_1x.png 1x, img/ic_menu_white_24dp_2x.png 2x" width="24" height="24">
         </a>
         <span class="header-text unselectable">Top Restaurants In Bangalore, India</span>
     </header>
@@ -23,7 +23,7 @@
                     <input placeholder="Restaurant Location" id="filter_input" type="text" data-bind="value: filterText, valueUpdate: 'afterkeydown', hasFocus: true">
                 </div>
                 <div>
-                    <img src="img/ic_filter_list_black_24dp_1x.png" srcset="img/ic_filter_list_black_24dp_1x.png 1x, img/ic_filter_list_black_24dp_2x.png 2x" width="24" height="24" />
+                    <img src="img/ic_filter_list_black_24dp_1x.png" srcset="img/ic_filter_list_black_24dp_1x.png 1x, img/ic_filter_list_black_24dp_2x.png 2x" width="24" height="24">
                 </div>
             </div>
             <div id="locations_container">
@@ -33,13 +33,13 @@
             </div>
         </div>
     </div>
-    <!-- Google Map Script -->
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRLZ6KbWKr9b3FDIGjcy7G9GLtonZaBDY&callback=initMap&v=3.exp" onerror="googleMapError()">
-    </script>
     <!-- our libraries script (jquery, knockout)-->
     <script src="js/lib.min.js"></script>
     <!-- our main script with model, viewModel -->
     <script src="js/app.min.js"></script>
+    <!-- Google Map Script -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRLZ6KbWKr9b3FDIGjcy7G9GLtonZaBDY&callback=initMap&v=3.exp" onerror="googleMapError()">
+    </script>
 </body>
 
 </html>
